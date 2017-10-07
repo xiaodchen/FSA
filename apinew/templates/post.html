@@ -1,0 +1,51 @@
+
+<!-- 
+<table style="width:100%">
+  <div class="post">
+
+  <tr>
+    <td>    
+      <div class="post-date">
+      {{p.created.strftime("%b %d, %Y 0:%I:%M%p ")}}
+    </td>
+  </tr>
+  <tr>
+    <td>    
+      <div class="post-content">
+      {{p._render_text | safe}}
+    </td>
+  </tr>
+  </div>
+</table> -->
+
+    <div class="dealbox">
+        <div class="prodimage"> 
+            <a href="{{p.link}}" target="_blank">
+                <img src="{{p.imagelink}}" alt="{{p.name}}">
+            </a>
+        </div>
+        <div class="dealcontent">
+            <strong>
+                <a href="{{p.link}}" target="_blank">
+                   {{p.name}} -- ${{p.price}}
+                </a>
+            </strong>
+            <div class="posttext">
+                {{p.category}}
+                <ul>
+                  {% for description in p.description %}
+                      <li>{{description}}</li>
+                  {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="break"></div>
+    </div>
+    <div class="more spacing-large text-left">
+<!--     <ul class="pagination">
+        <li class="disabled">← Previous</li>
+        <li></li>
+        <li><a href="?page=2">Next →</a></li>
+    </ul> -->
+</div>
+</div>

@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<br>
+	<br>
+	{% if allFSAItems %}
+		{% for item in allFSAItems %}
+			{{ item.render() | safe }}
+			<br>
+		{% endfor %}
+	{% endif %}
+
+<form method="post">
+      <table>
+        <tr>
+          <td class="label">
+            Link:
+          </td>
+          <td>
+            <input type="text" name="productKey" value="{{productKey}}">
+          </td>
+          <td class="error">
+            {{error_productKey}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Category:
+          </td>
+          <td>
+            <input type="text" name="category" value="{{category}}">
+          </td>
+          <td class="error">
+            {{error_category}}
+          </td>
+        </tr>
+      </table>
+
+      <input type="submit">
+    </form>
+
+<h1>What are eligible expenses?</h1>
+
+<p>
+Eligible expenses are medical items or services that count as IRS-qualified purchases you can make with your {{productName}} pre-tax dollars. Only eligible out-of-pocket expenses can be reimbursed to you from your {{productName}}—if they won’t already be reimbursed by the provider—and using your {{productName}} funds for ineligible expenses may result in tax penalties. Below are some of the most common eligible expenses; you can find a complete list <a href="http://www.irs.gov/publications/p502/">here</a>.
+</p>
+
+<br/>
+
+
+<h2>Eligible Expenses</h2>
+
+<table style="width:100%">
+  <tr>
+    <td>
+      <ul>
+        <li> Acupuncture </li>
+        <li> Adaptive equipment (e.g. raised toilet seat) </li>
+        <li> Ambulance fees </li>
+        <li> Artificial limb or prosthesis </li>
+        <li> Artificial teeth </li>
+        <li> Bandage tape </li>
+        <li> Bandages </li>
+        <li> Birth control pills </li>
+        <li> Blood pressure monitor </li>
+        <li> Braces (knee, ankle, wrist) </li>
+        <li> Breast pumps &amp; supplies </li>
+        <li> Car adaptations (for persons with disabilities) </li>
+        <li> Chiropractic services </li>
+        <li> Co-insurance </li>
+        <li> Contact lens solution </li>
+        <li> Contacts </li>
+        <li> Contraceptives </li>
+        <li> Copays </li>
+        <li> CPAP machine </li>
+        <li> Crutches </li>
+        <li> Deductibles </li>
+        <li> Dental services (excludes veneers and other cosmetic procedures) </li>
+        <li> Diabetes testing supplies </li>
+        <li> Diabetic supplies </li>
+        <li> Doctor visits </li>
+        <li> Drug addiction treatment </li>
+        <li> Eye drops </li>
+        <li> Eye exams </li>
+        <li> Fertility treatment </li>
+        <li> First aid kits </li>
+        <li> Flu shots </li>
+        <li> Hearing aids </li>
+        <li> Home medical equipment </li>
+        <li> Hormone therapy </li>
+      </ul>
+      </td>
+    <td>
+      <ul>
+        <li> Hospital services (including meals and lodging) </li>
+        <li> Humidifier </li>
+        <li> Hypnosis </li>
+        <li> Individual Counseling </li>
+        <li> Insulin </li>
+        <li> Lab work </li>
+        <li> Lactation consultants </li>
+        <li> Lamaze </li>
+        <li> Laser eye surgery </li>
+        <li> Physician Prescribed Massages </li>
+        <li> Medical abortion </li>
+        <li> Medical alert bracelet &amp; current year membership fees </li>
+        <li> Mileage (to receive medical care) </li>
+        <li> Non-cosmetic surgery </li>
+        <li> Naturopathic Visits </li>
+        <li> Occupational Therapy </li>
+        <li> Orthotics </li>
+        <li> Physical exams </li>
+        <li> Physical therapy </li>
+        <li> Pregnancy test </li>
+        <li> Prenatal vitamins </li>
+        <li> Prescription drugs </li>
+        <li> Prescription glasses </li>
+        <li> Psychologist </li>
+        <li> Reading glasses </li>
+        <li> Saline Nasal Spray </li>
+        <li> Service animals </li>
+        <li> Speech Therapy </li>
+        <li> Sunscreen SPF 30 or greater (proof of SPF required) </li>
+        <li> Telephone equipment for hearing &amp; visually impaired </li>
+        <li> Thermometer </li>
+        <li> Vaccinations </li>
+        <li> Walker </li>
+        <li> Wheelchair &amp; repair </li>
+        <li> X-rays </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
+<script>
+  let sorted = {{allFSAItemsStr|safe}}.sort(function(a, b){
+    return a.price - b.price;
+  });
+  for(var i = 0, size = {{allFSAItemsStr|safe}}.length; i < size ; i++){
+      item = sorted[i]
+      console.log(item.link, item.imagelink, item.name, item.price, item.category);
+  }  
+
+</script>
+{% endblock %}
+
+

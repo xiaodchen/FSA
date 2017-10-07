@@ -1,0 +1,57 @@
+{% extends "front.html" %}
+
+{% block addForm %}
+    <form method="post">
+      <table>
+        <tr>
+          <td class="label">
+            Link:
+          </td>
+          <td>
+            <input type="text" name="Link" value="{{link}}">
+          </td>
+          <td class="error">
+            {{error_link}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="imagelink">
+            Imagelink:
+          </td>
+          <td>
+            <input type="text" name="imagelink" value="">
+          </td>
+          <td class="error">
+            {{error_imagelink}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="name">
+            Name:
+          </td>
+          <td>
+            <input type="text" name="name" value="">
+          </td>
+          <td class="error">
+            {{error_name}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Price:
+          </td>
+          <td>
+            <input type="text" name="price" value="{{price}}">
+          </td>
+          <td class="error">
+            {{error_price}}
+          </td>
+        </tr>
+      </table>
+
+      <input type="submit">
+    </form>
+{% endblock %}

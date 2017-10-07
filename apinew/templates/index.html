@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FSA eligible items</title>
+    <link rel="stylesheet" media="screen" type="text/css" href="./static/css/lists.css" title="css"/>
+    <script src="./static/jquery-min.js"></script>
+    <script>
+
+    </script>
+</head>
+
+    <body>
+        <div class="container">
+            <div id="main-title" style="margin:30px 0 0;"><h1><span>FSA Eligible Items</span></h1></div>
+            <div id="fp-deals">
+            </div>
+        </div>
+    </body>
+</html>
+
+
+<script>
+
+function getItemHtml(itemLink, itemImageLink, itemName, itemPrice, itemCategory) {
+    return `
+                    <div class="dealbox">
+                        <div class="prodimage"> 
+                            <a href="${itemLink}" target="_blank">
+                                <img src="${itemImageLink}" alt="${itemName}">
+                            </a>
+                        </div>
+                        <div class="dealcontent">
+                            <strong>
+                                <a href="${itemLink}" target="_blank">
+                                    ${itemName} -- $${itemPrice}
+                                </a>
+                            </strong>
+                            <div class="posttext">
+                                <ul>
+                                    <li>${itemCategory}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="break"></div>
+                    </div>
+                    
+    `;
+}
+
+var templateStr = '';
+var items = [
+    {
+        link: "https://www.amazon.com/dp/B00KPQB2SS/",
+        imageLink: "https://images-na.ssl-images-amazon.com/images/I/81D89OHwQ4L._SX522_.jpg",
+        name: "Omron 10 Series Upper Arm Blood Pressure Monitor with Cuff that fits Standard and Large Arms (BP785N)",
+        price: 45.37,
+        category: "Blood Pressure",
+        description: "Accuracy with exclusive TruRead technology that automatically takes three consecutive readings one minute apart and calculates the average"
+    },
+    {
+        link: "https://www.amazon.com/dp/B018KTCRYO/",
+        imageLink: "https://images-na.ssl-images-amazon.com/images/I/41tJ5ET-9PL.jpg",
+        name: "Omron Healthcare BP785 10 Series Upper Arm Monitor (BP785) by Omron Healthcare",
+        price: 124.53,
+        category: "Blood Pressure",
+        description: "Accuracy with exclusive TruRead technology that automatically takes three consecutive readings one minute apart and calculates the average"
+    },
+    {
+        link: "https://www.amazon.com/dp/B004F0NXBE/",
+        imageLink: "https://images-na.ssl-images-amazon.com/images/I/A1AB0ddQvFL._SL1500_.jpg",
+        name: "Okamoto 0.04 Zero Zero Four Condoms 24 pack",
+        price: 29.19,
+        category: "Condoms",
+        description: "Accuracy with exclusive TruRead technology that automatically takes three consecutive readings one minute apart and calculates the average"
+    },
+];
+var sorted = items.sort(function(a,b) {
+    return b.price - a.price;
+})
+for(var i = 0, size = sorted.length; i < size ; i++){
+    item = sorted[i]
+    templateStr += getItemHtml(item.link, item.imageLink, item.name, item.price, item.category);
+}
+templateStr += `
+                <div class="more spacing-large text-left">
+                    <ul class="pagination">
+                        <li class="disabled">← Previous</li>
+                        <li></li>
+                        <li><a href="?page=2">Next →</a></li>
+                    </ul>
+                </div>
+`
+$("div#fp-deals").html( templateStr );
+</script>
+
+
+
+
